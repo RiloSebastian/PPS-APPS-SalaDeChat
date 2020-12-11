@@ -1,0 +1,24 @@
+<div *ngIf='usuario !== null' class='ion-page' id="main">
+    <ion-header class="header-home">
+        <ion-toolbar align='center' color='elemento'>
+            <ion-title>
+                Relevamiento Visual
+            </ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content color='fondo'>
+        <div class='contenido' style="text-align: center; margin-top: 25px;">
+            <div style="margin: 10px auto;" (click)='sala("Division A")'>
+                <figcaption class="figure-caption">Sala De Chat A</figcaption>
+            </div>
+            <div style="margin: 10px auto;" (click)='sala("Division B")'>
+                <figcaption class="figure-caption">Sala De Chat B</figcaption>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer>
+        <ion-toolbar color="fondo">
+            <ion-button color='danger' expand='block' (click)='cerrarSesion()'>Cerrar Sesion</ion-button>
+        </ion-toolbar>
+    </ion-footer>
+</div>

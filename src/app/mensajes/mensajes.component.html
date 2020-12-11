@@ -1,0 +1,35 @@
+<ng-container *ngIf='listaMensajes !== null'>
+    <ion-header>
+        <ion-toolbar color='elemento'>
+            <ion-buttons slot="start">
+                <ion-back-button></ion-back-button>
+            </ion-buttons>
+            <ion-title> Chat {{salaChat}} </ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <ion-item lines='none' *ngFor='let mensaje of listaMensajes'>
+                <ion-card [slot]='mensaje.usuario === usuario ? "end":"start"' [color]='mensaje.usuario === usuario ? "success":"primary"'>
+                    <ion-card-content>
+                        <ion-card-subtitle style='font-size: 10px;'>{{mensaje.usuario}}</ion-card-subtitle>
+                        <ion-label>{{mensaje.mensaje}}</ion-label>
+                        <ion-label align='end' style='font-size: 10px;'>{{mensaje.fecha | date: 'short'}}</ion-label>
+                    </ion-card-content>
+                </ion-card>
+            </ion-item>
+        </ion-list>
+        <div class="mensaje">
+            <form #ngForm='ngForm' [formGroup]='form'>
+                <ion-row>
+                    <ion-col size='9'>
+                        <ion-input type='text' formControlName='mensaje' placeholder='mensaje' required></ion-input>
+                    </ion-col>
+                    <ion-col size='3'>
+                        <ion-button type='submit' color='primary' (click)='enviarMensj()'>Enviar</ion-button>
+                    </ion-col>
+                </ion-row>
+            </form>
+        </div>
+    </ion-content>
+</ng-container>
