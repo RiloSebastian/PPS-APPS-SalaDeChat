@@ -11,6 +11,7 @@ import { ComplementosService } from 'src/app/servicios/complementos.service';
 export class MensajesComponent implements OnInit, OnDestroy {
 	public usuario: string = null;
 	public salaChat: string = null;
+	public splash: boolean = false;
 	public sub: any;
 	public form: FormGroup = new FormGroup({
 		mensaje: new FormControl(null, [Validators.required, Validators.maxLength(21)])
@@ -21,6 +22,7 @@ export class MensajesComponent implements OnInit, OnDestroy {
 	constructor(private mensj: MensajesService, private comp: ComplementosService) { }
 
 	ngOnInit() {
+		this.splash = true;
 		let x: any = JSON.parse(localStorage.getItem('identif'));
 		this.usuario = x.usuario;
 		this.salaChat = x.sala;
@@ -30,6 +32,7 @@ export class MensajesComponent implements OnInit, OnDestroy {
 				x['id'] = snap.payload.doc.id;
 				return { ...x };
 			}).filter(x => x.sala === this.salaChat);
+			this.splash = false;
 		});
 	}
 

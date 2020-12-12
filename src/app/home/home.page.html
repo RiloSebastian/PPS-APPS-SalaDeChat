@@ -2,17 +2,17 @@
     <ion-header class="header-home">
         <ion-toolbar align='center' color='elemento'>
             <ion-title>
-                Relevamiento Visual
+                {{usuario.email}}
             </ion-title>
         </ion-toolbar>
     </ion-header>
     <ion-content color='fondo'>
         <div class='contenido' style="text-align: center; margin-top: 25px;">
-            <div style="margin: 10px auto;" (click)='sala("Division A")'>
-                <figcaption class="figure-caption">Sala De Chat A</figcaption>
+            <div style="margin: 10px auto; height: 200px; width:300px; border-radius: 20px; background-color: #eb445a;" (click)='sala("Division A")'>
+                <h1 style="margin-top: 30%;">PPS-4A</h1>
             </div>
-            <div style="margin: 10px auto;" (click)='sala("Division B")'>
-                <figcaption class="figure-caption">Sala De Chat B</figcaption>
+            <div style="margin: 10px auto; height: 200px; width:300px; border-radius: 20px; background-color:  #3880ff;" (click)='sala("Division B")'>
+               <h1 style="margin-top: 30%;">PPS-4B</h1>
             </div>
         </div>
     </ion-content>

@@ -1,4 +1,4 @@
-<ng-container *ngIf='listaMensajes !== null'>
+<ng-container *ngIf='!splash && listaMensajes !== null'>
     <ion-header>
         <ion-toolbar color='elemento'>
             <ion-buttons slot="start">
@@ -7,12 +7,12 @@
             <ion-title> Chat {{salaChat}} </ion-title>
         </ion-toolbar>
     </ion-header>
-    <ion-content>
-        <ion-list>
+    <ion-content [color]='salaChat === "Division A" ? "danger":"primary"'>
+        <ion-list [style.--ion-background-color]='salaChat === "Division A" ? "#eb445a":"#3880ff"'>
             <ion-item lines='none' *ngFor='let mensaje of listaMensajes'>
-                <ion-card [slot]='mensaje.usuario === usuario ? "end":"start"' [color]='mensaje.usuario === usuario ? "success":"primary"'>
+                <ion-card [slot]='mensaje.usuario === usuario ? "end":"start"' [color]='mensaje.usuario === usuario ? "success":"secondary"'>
                     <ion-card-content>
-                        <ion-card-subtitle style='font-size: 10px;'>{{mensaje.usuario}}</ion-card-subtitle>
+                        <ion-card-subtitle *ngIf='mensaje.usuario !== usuario' style='font-size: 10px;'>{{mensaje.usuario}}</ion-card-subtitle>
                         <ion-label>{{mensaje.mensaje}}</ion-label>
                         <ion-label align='end' style='font-size: 10px;'>{{mensaje.fecha | date: 'short'}}</ion-label>
                     </ion-card-content>
@@ -33,3 +33,4 @@
         </div>
     </ion-content>
 </ng-container>
+<img *ngIf='splash' class='spinnerA' src="../../assets/logoMov.png">
